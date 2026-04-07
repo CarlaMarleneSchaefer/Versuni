@@ -38,4 +38,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const fadeElements = document.querySelectorAll('.fade-in');
     fadeElements.forEach(el => observer.observe(el));
+
+    // 3. Custom Cursor Logic
+    const cursor = document.querySelector('.custom-cursor');
+    if (cursor) {
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+        });
+        
+        // Add hover effect for interactive elements
+        const hoverElements = document.querySelectorAll('a, button, .btn, .bento-card, .hero-portrait');
+        hoverElements.forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+    }
 });

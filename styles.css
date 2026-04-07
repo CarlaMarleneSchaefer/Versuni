@@ -139,11 +139,26 @@ a {
 }
 
 .hero h1 {
-    font-size: clamp(3rem, 5vw, 4.5rem); /* Slightly smaller so it fits well */
     margin-bottom: 2rem;
     color: var(--text-black);
     text-transform: uppercase;
+}
+
+.hero-small {
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    font-weight: 600;
+    font-family: var(--font-main);
+    text-transform: none;
+    text-shadow: none;
+    opacity: 0.6;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+.hero-large {
+    font-size: clamp(3rem, 5vw, 4.5rem);
     text-shadow: 2px 2px 0px var(--accent-neon);
+    display: inline-block;
 }
 
 .hero p {
@@ -484,4 +499,38 @@ a {
 .fade-in.is-visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* -- Custom Cursor -- */
+@media (pointer: fine) {
+    body, a, button, .btn, .hero-portrait {
+        cursor: none;
+    }
+    .custom-cursor {
+        display: block;
+    }
+}
+
+.custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    /* Weiß funktioniert mit 'difference' am besten, um Farben perfekt umzukehren */
+    background-color: #ffffff; 
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    mix-blend-mode: difference;
+    transition: width 0.3s ease, height 0.3s ease;
+    will-change: transform;
+    display: none; /* Versteckt auf Touch-Geräten */
+}
+
+.custom-cursor.hover {
+    width: 80px;
+    height: 80px;
+    background-color: var(--accent-neon); /* Wechsel zu Neongelb beim Hovern für einen coolen Effekt */
 }
