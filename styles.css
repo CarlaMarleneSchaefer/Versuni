@@ -608,8 +608,8 @@ a {
     }
 
     .hero {
-        padding-top: 36rem;
-        /* Increased vertical space to clear the tall mobile navbar */
+        align-items: flex-start; /* This stops flexbox from re-centering and eating the padding! */
+        padding-top: 16rem; 
     }
 
     .hero-layout,
